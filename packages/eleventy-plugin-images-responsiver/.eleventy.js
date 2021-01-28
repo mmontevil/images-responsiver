@@ -1,11 +1,13 @@
 'use strict';
 
 const imagesResponsiver = require('images-responsiver');
+const unescape = require('html-escaper').unescape;
+
 let imagesResponsiverOptions;
 
 const imagesResponsiverTransform = (content, outputPath) => {
   if (outputPath && outputPath.endsWith('.html')) {
-    return imagesResponsiver(content, imagesResponsiverOptions);
+    return unescape(imagesResponsiver(content, imagesResponsiverOptions));
   }
   return content;
 };
